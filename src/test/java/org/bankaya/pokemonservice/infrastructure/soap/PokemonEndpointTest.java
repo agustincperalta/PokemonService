@@ -35,18 +35,13 @@ class PokemonEndpointTest {
 
   @Test
   void testGetPokemonAbilities() {
-    // Datos simulados
     GetPokemonAbilitiesRequest request = new GetPokemonAbilitiesRequest();
     request.setPokemonName("pikachu");
     GetPokemonAbilitiesResponse expectedResponse = new GetPokemonAbilitiesResponse();
-
-    // Mockear el servicio
     when(pokemonService.getPokemonAbilitiesByName("pikachu")).thenReturn(expectedResponse);
 
-    // Llamada al método del endpoint
     GetPokemonAbilitiesResponse actualResponse = pokemonEndpoint.getPokemonAbilities(request);
 
-    // Verificaciones
     assertEquals(expectedResponse, actualResponse);
     verify(pokemonService).getPokemonAbilitiesByName("pikachu");
   }
@@ -56,7 +51,6 @@ class PokemonEndpointTest {
     GetPokemonBaseExperienceRequest request = new GetPokemonBaseExperienceRequest();
     request.setPokemonName("charizard");
     GetPokemonBaseExperienceResponse expectedResponse = new GetPokemonBaseExperienceResponse();
-
     when(pokemonService.getPokemonBaseExperienceByName("charizard")).thenReturn(expectedResponse);
 
     GetPokemonBaseExperienceResponse actualResponse = pokemonEndpoint.getPokemonBaseExperience(
@@ -71,7 +65,6 @@ class PokemonEndpointTest {
     GetPokemonHeldItemsRequest request = new GetPokemonHeldItemsRequest();
     request.setPokemonName("bulbasaur");
     GetPokemonHeldItemsResponse expectedResponse = new GetPokemonHeldItemsResponse();
-
     when(pokemonService.getPokemonHeldItemsByName("bulbasaur")).thenReturn(expectedResponse);
 
     GetPokemonHeldItemsResponse actualResponse = pokemonEndpoint.getPokemonHeldItems(request);
@@ -85,7 +78,6 @@ class PokemonEndpointTest {
     GetPokemonIdRequest request = new GetPokemonIdRequest();
     request.setPokemonName("mewtwo");
     GetPokemonIdResponse expectedResponse = new GetPokemonIdResponse();
-
     when(pokemonService.getPokemonIdByName("mewtwo")).thenReturn(expectedResponse);
 
     GetPokemonIdResponse actualResponse = pokemonEndpoint.getPokemonId(request);
@@ -99,7 +91,6 @@ class PokemonEndpointTest {
     GetPokemonLocationAreaEncountersRequest request = new GetPokemonLocationAreaEncountersRequest();
     request.setPokemonName("eevee");
     GetPokemonLocationAreaEncountersResponse expectedResponse = new GetPokemonLocationAreaEncountersResponse();
-
     when(pokemonService.getPokemonLocationAreaEncounterByName("eevee")).thenReturn(
         expectedResponse);
 
@@ -115,7 +106,6 @@ class PokemonEndpointTest {
     GetPokemonNameRequest request = new GetPokemonNameRequest();
     request.setPokemonName("squirtle");
     GetPokemonNameResponse expectedResponse = new GetPokemonNameResponse();
-
     when(pokemonService.getPokemonNameByName("squirtle")).thenReturn(expectedResponse);
 
     GetPokemonNameResponse actualResponse = pokemonEndpoint.getPokemonName(request);

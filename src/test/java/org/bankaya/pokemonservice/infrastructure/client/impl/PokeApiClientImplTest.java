@@ -22,10 +22,10 @@ class PokeApiClientImplTest {
   private WebClient webClient;
 
   @Mock
-  private WebClient.RequestHeadersUriSpec<?> requestHeadersUriSpec;
+  private WebClient.RequestHeadersUriSpec requestHeadersUriSpec;
 
   @Mock
-  private WebClient.RequestHeadersSpec<?> requestHeadersSpec;
+  private WebClient.RequestHeadersSpec requestHeadersSpec;
 
   @Mock
   private WebClient.ResponseSpec responseSpec;
@@ -42,23 +42,18 @@ class PokeApiClientImplTest {
     String pokemonName = "pikachu";
     Map<String, Object> expectedResponse = Map.of("name", "pikachu", "id", 25);
 
-    // Configuración del mock para el WebClient
-    when(webClient.get()).thenReturn((WebClient.RequestHeadersUriSpec) requestHeadersUriSpec);
-    when(requestHeadersUriSpec.uri("/{name}", pokemonName)).thenReturn(
-        (WebClient.RequestHeadersSpec) requestHeadersSpec);
+    when(webClient.get()).thenReturn(requestHeadersUriSpec);
+    when(requestHeadersUriSpec.uri("/{name}", pokemonName)).thenReturn(requestHeadersSpec);
     when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
     when(responseSpec.bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {
     })).thenReturn(monoResponse);
     when(monoResponse.block()).thenReturn(expectedResponse);
 
-    // Llamada al método a probar
     Map<String, Object> actualResponse = pokeApiClientImpl.getPokemonDataByName(pokemonName);
 
-    // Verificaciones
     assertNotNull(actualResponse);
     assertEquals(expectedResponse, actualResponse);
 
-    // Verificación de las interacciones con el WebClient
     verify(webClient).get();
     verify(requestHeadersUriSpec).uri("/{name}", pokemonName);
     verify(requestHeadersSpec).retrieve();

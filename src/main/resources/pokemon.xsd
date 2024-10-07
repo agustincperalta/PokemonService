@@ -4,7 +4,6 @@
   xmlns="http://bankaya.com/soap/pokemon/v1"
   elementFormDefault="qualified">
 
-  <!-- Solicitud para obtener los datos de un Pokémon -->
   <xs:element name="getPokemonAbilitiesRequest">
     <xs:complexType>
       <xs:sequence>
@@ -52,32 +51,19 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <!-- Definir el elemento raíz que contiene todos los campos en un objeto principal llamado getPokemonResponse -->
   <xs:element name="getPokemonAbilitiesResponse">
     <xs:complexType>
       <xs:sequence>
-        <!-- Abilities -->
         <xs:element name="abilities" type="AbilitySlot" minOccurs="0" maxOccurs="unbounded"/>
-
-        <!-- Base experience -->
         <xs:element name="base_experience" type="xs:int" minOccurs="0"/>
-
-        <!-- Held items -->
         <xs:element name="held_items" type="HeldItem" minOccurs="0" maxOccurs="unbounded"/>
-
-        <!-- ID -->
         <xs:element name="id" type="xs:int" minOccurs="0"/>
-
-        <!-- Name -->
         <xs:element name="name" type="xs:string" minOccurs="0"/>
-
-        <!-- Location area encounters -->
         <xs:element name="location_area_encounters" type="xs:string" minOccurs="0"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
 
-  <!-- Definir el tipo para la estructura de cada elemento dentro de "abilities" -->
   <xs:complexType name="AbilitySlot">
     <xs:sequence>
       <xs:element name="ability" type="Ability"/>
@@ -86,7 +72,6 @@
     </xs:sequence>
   </xs:complexType>
 
-  <!-- Definir el tipo para la estructura de "ability" -->
   <xs:complexType name="Ability">
     <xs:sequence>
       <xs:element name="name" type="xs:string"/>
@@ -94,7 +79,6 @@
     </xs:sequence>
   </xs:complexType>
 
-  <!-- Definir el tipo para la estructura de "Held Items" -->
   <xs:complexType name="HeldItem">
     <xs:sequence>
       <xs:element name="item" type="ItemDetail"/>
@@ -102,7 +86,6 @@
     </xs:sequence>
   </xs:complexType>
 
-  <!-- Definir el tipo para la estructura de "Item Detail" -->
   <xs:complexType name="ItemDetail">
     <xs:sequence>
       <xs:element name="name" type="xs:string"/>
@@ -110,7 +93,6 @@
     </xs:sequence>
   </xs:complexType>
 
-  <!-- Definir el tipo para la estructura de "Version Detail" -->
   <xs:complexType name="VersionDetail">
     <xs:sequence>
       <xs:element name="rarity" type="xs:int"/>
@@ -118,7 +100,6 @@
     </xs:sequence>
   </xs:complexType>
 
-  <!-- Definir el tipo para la estructura de "Version" -->
   <xs:complexType name="Version">
     <xs:sequence>
       <xs:element name="name" type="xs:string"/>

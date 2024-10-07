@@ -25,9 +25,7 @@ class PokemonMapperServiceImplTest {
 
   @Test
   void testMapAbilities() {
-    // Simulando los datos de habilidades
     List<Map<String, Object>> abilitiesData = new ArrayList<>();
-
     Map<String, Object> ability1 = new HashMap<>();
     Map<String, Object> ability1Map = new HashMap<>();
     ability1Map.put("name", "overgrow");
@@ -37,10 +35,8 @@ class PokemonMapperServiceImplTest {
     ability1.put("slot", 1);
     abilitiesData.add(ability1);
 
-    // Llamar al método de prueba
     List<AbilitySlot> result = pokemonMapperService.mapAbilities(abilitiesData);
 
-    // Verificaciones
     assertEquals(1, result.size());
     assertEquals("overgrow", result.get(0).getAbility().getName());
     assertEquals("https://pokeapi.co/api/v2/ability/65/", result.get(0).getAbility().getUrl());
@@ -50,18 +46,30 @@ class PokemonMapperServiceImplTest {
 
   @Test
   void testMapAbilities_NullInput() {
-    // Llamar al método con entrada nula
     List<AbilitySlot> result = pokemonMapperService.mapAbilities(null);
 
-    // Verificación
     assertTrue(result.isEmpty());
   }
 
   @Test
   void testMapHeldItems() {
-    // Simulando los datos de Held Items
-    List<Map<String, Object>> heldItemsData = new ArrayList<>();
+    List<Map<String, Object>> heldItemsData = getMaps();
 
+    List<HeldItem> result = pokemonMapperService.mapHeldItems(heldItemsData);
+
+    assertEquals(1, result.size());
+    assertEquals("leftovers", result.get(0).getItem().getName());
+    assertEquals("https://pokeapi.co/api/v2/item/234/", result.get(0).getItem().getUrl());
+    assertEquals(1, result.get(0).getVersionDetails().size());
+
+    VersionDetail versionDetail = result.get(0).getVersionDetails().get(0);
+    assertEquals(50, versionDetail.getRarity());
+    assertEquals("gold", versionDetail.getVersion().getName());
+    assertEquals("https://pokeapi.co/api/v2/version/12/", versionDetail.getVersion().getUrl());
+  }
+
+  private static List<Map<String, Object>> getMaps() {
+    List<Map<String, Object>> heldItemsData = new ArrayList<>();
     Map<String, Object> heldItem1 = new HashMap<>();
     Map<String, Object> itemDetail = new HashMap<>();
     itemDetail.put("name", "leftovers");
@@ -80,28 +88,13 @@ class PokemonMapperServiceImplTest {
 
     heldItem1.put("version_details", versionDetailsList);
     heldItemsData.add(heldItem1);
-
-    // Llamar al método de prueba
-    List<HeldItem> result = pokemonMapperService.mapHeldItems(heldItemsData);
-
-    // Verificaciones
-    assertEquals(1, result.size());
-    assertEquals("leftovers", result.get(0).getItem().getName());
-    assertEquals("https://pokeapi.co/api/v2/item/234/", result.get(0).getItem().getUrl());
-    assertEquals(1, result.get(0).getVersionDetails().size());
-
-    VersionDetail versionDetail = result.get(0).getVersionDetails().get(0);
-    assertEquals(50, versionDetail.getRarity());
-    assertEquals("gold", versionDetail.getVersion().getName());
-    assertEquals("https://pokeapi.co/api/v2/version/12/", versionDetail.getVersion().getUrl());
+    return heldItemsData;
   }
 
   @Test
   void testMapHeldItems_NullInput() {
-    // Llamar al método con entrada nula
     List<HeldItem> result = pokemonMapperService.mapHeldItems(null);
 
-    // Verificación
     assertTrue(result.isEmpty());
   }
 }

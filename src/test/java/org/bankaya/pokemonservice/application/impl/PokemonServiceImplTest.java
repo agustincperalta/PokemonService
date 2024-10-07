@@ -23,10 +23,13 @@ import org.bankaya.pokemonservice.infrastructure.client.PokemonMapperService;
 import org.bankaya.pokemonservice.infrastructure.repository.RequestLogRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+@ExtendWith(MockitoExtension.class)
 class PokemonServiceImplTest {
 
   @Mock
@@ -46,7 +49,6 @@ class PokemonServiceImplTest {
 
   @BeforeEach
   void setUp() {
-    MockitoAnnotations.openMocks(this);
     when(request.getHeader("X-Forwarded-For")).thenReturn(null);
     when(request.getRemoteAddr()).thenReturn("127.0.0.1");
   }
