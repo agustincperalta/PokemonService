@@ -1,0 +1,9 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:pok="http://bankaya.com/soap/pokemon/v1">
+    <soapenv:Header/>
+    <soapenv:Body>
+       <pok:getPokemonHeldItemsRequest>
+          <pok:pokemonName>alakazam</pok:pokemonName>
+       </pok:getPokemonHeldItemsRequest>
+    </soapenv:Body>
+</soapenv:Envelope>
