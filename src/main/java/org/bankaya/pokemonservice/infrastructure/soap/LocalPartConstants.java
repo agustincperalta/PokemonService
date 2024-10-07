@@ -1,6 +1,11 @@
 package org.bankaya.pokemonservice.infrastructure.soap;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class LocalPartConstants {
+
   public static final String NAMESPACE_URI = "http://bankaya.com/soap/pokemon/v1";
   public static final String GET_POKEMON_BASE_EXPERIENCE_REQUEST = "getPokemonBaseExperienceRequest";
   public static final String GET_POKEMON_ABILITIES_REQUEST = "getPokemonAbilitiesRequest";
