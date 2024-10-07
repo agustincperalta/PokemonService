@@ -11,7 +11,7 @@
   </parent>
   <groupId>org.pokemon</groupId>
   <artifactId>PokemonService</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.1.0-SNAPSHOT</version>
   <name>PokemonService</name>
   <description>PokemonService</description>
   <url/>
@@ -41,12 +41,6 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web-services</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
     </dependency>
 
     <dependency>
@@ -112,12 +106,6 @@
     </dependency>
     <dependency>
       <groupId>org.powermock</groupId>
-      <artifactId>powermock-api-mockito2</artifactId>
-      <version>2.0.9</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.powermock</groupId>
       <artifactId>powermock-module-junit4</artifactId>
       <version>2.0.9</version>
       <scope>test</scope>
@@ -156,7 +144,14 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.8</version> <!-- Asegúrate de usar una versión reciente -->
+        <version>0.8.8</version>
+        <configuration>
+          <excludes>
+            <exclude>**/config/*</exclude>
+            <exclude>org/bankaya/pokemonservice/PokemonServiceApplication*</exclude>
+            <exclude>org/bankaya/pokemonservice/infrastructure/repository/RequestLog*</exclude>
+          </excludes>
+        </configuration>
         <executions>
           <execution>
             <goals>
@@ -169,14 +164,6 @@
             <goals>
               <goal>report</goal>
             </goals>
-            <configuration>
-              <excludes>
-                <exclude>org/bankaya/pokemonservice/PokemonServiceApplication*</exclude>
-                <exclude>org/bankaya/pokemonservice/infrastructure/config/WebClientConfig*</exclude>
-                <exclude>org/bankaya/pokemonservice/infrastructure/config/WebServiceConfig*</exclude>
-                <exclude>org/bankaya/pokemonservice/infrastructure/repository/RequestLog*</exclude>
-              </excludes>
-            </configuration>
           </execution>
 
         </executions>
