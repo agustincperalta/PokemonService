@@ -1,4 +1,4 @@
-package org.bankaya.pokemonservice.cucumberIT.stepdefinitions;
+package org.bankaya.pokemonservice.cucumber.stepdefinitions;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -20,7 +20,9 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.spring.CucumberContextConfiguration;
 import lombok.extern.slf4j.Slf4j;
+import org.bankaya.pokemonservice.CucumberSpringConfiguration;
 import org.bankaya.pokemonservice.application.impl.PokemonServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -28,7 +30,8 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Slf4j
-public class PokemonStepDefinitions {
+@CucumberContextConfiguration
+public class PokemonStepDefinitions extends CucumberSpringConfiguration {
 
   @Autowired
   private PokemonServiceImpl pokemonService;

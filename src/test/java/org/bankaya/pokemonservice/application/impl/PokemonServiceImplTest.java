@@ -18,6 +18,7 @@ import com.bankaya.soap.pokemon.v1.HeldItem;
 import jakarta.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import org.bankaya.pokemonservice.infrastructure.client.PokeApiClient;
 import org.bankaya.pokemonservice.infrastructure.client.PokemonMapperService;
 import org.bankaya.pokemonservice.infrastructure.repository.RequestLogRepository;
@@ -48,7 +49,10 @@ class PokemonServiceImplTest {
 
   @BeforeEach
   void setUp() {
-    when(request.getHeader("X-Forwarded-For")).thenReturn(null);
+    Random random = new Random();
+    String[] responses = {null, "", "unknown"};
+    when(request.getHeader("X-Forwarded-For"))
+        .thenAnswer(invocation -> responses[random.nextInt(responses.length)]);
     when(request.getRemoteAddr()).thenReturn("127.0.0.1");
   }
 
@@ -120,11 +124,13 @@ class PokemonServiceImplTest {
   void testGetPokemonLocationAreaEncounterByName() {
     String name = "pikachu";
     String expectedLocationAreaEncounters = "forest";
-    Map<String, Object> mockPokemonData = Map.of("location_area_encounters", expectedLocationAreaEncounters);
+    Map<String, Object> mockPokemonData = Map.of("location_area_encounters",
+        expectedLocationAreaEncounters);
 
     when(pokeApiClient.getPokemonDataByName(name)).thenReturn(mockPokemonData);
 
-    GetPokemonLocationAreaEncountersResponse response = pokemonService.getPokemonLocationAreaEncounterByName(name);
+    GetPokemonLocationAreaEncountersResponse response = pokemonService.getPokemonLocationAreaEncounterByName(
+        name);
 
     assertEquals(expectedLocationAreaEncounters, response.getLocationAreaEncounters());
     verify(requestLogRepository, times(1)).save(any());
