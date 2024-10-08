@@ -22,7 +22,7 @@
     <java.version>17</java.version>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     <sonar.organization>agustincperalta</sonar.organization>
-    <cucumber.version>6.8.1</cucumber.version>
+    <cucumber.version>7.8.0</cucumber.version>
   </properties>
 
   <dependencies>
@@ -213,8 +213,9 @@
         </executions>
         <configuration>
           <includes>
-            <include>**/*IT*</include>
+            <include>**/*IT.java</include> <!-- Incluir los tests que terminan en IT -->
           </includes>
+          <classesDirectory>${project.build.testOutputDirectory}</classesDirectory> <!-- Asegura que las clases de prueba estén en el classpath -->
         </configuration>
       </plugin>
     </plugins>

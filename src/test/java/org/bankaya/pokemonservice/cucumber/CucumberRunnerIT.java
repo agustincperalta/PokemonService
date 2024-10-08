@@ -1,4 +1,4 @@
-package org.bankaya.pokemonservice.cucumberIT;
+package org.bankaya.pokemonservice.cucumber;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/resources/features",
     plugin = {"pretty", "html:target/cucumber/pokemon"},
-    extraGlue = "org.bankaya.pokemonservice.stepdefinitions",
+    extraGlue = "org.bankaya.pokemonservice.cucumber.stepdefinitions",
     publish = true)
 public class CucumberRunnerIT {
 

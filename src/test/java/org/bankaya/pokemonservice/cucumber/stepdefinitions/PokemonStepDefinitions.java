@@ -1,4 +1,4 @@
-package org.bankaya.pokemonservice.cucumberIT.stepdefinitions;
+package org.bankaya.pokemonservice.cucumber.stepdefinitions;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
