@@ -1,4 +1,4 @@
-package org.bankaya.pokemonservice.cucumber.stepdefinitions;
+package org.bankaya.pokemonservice;
 
 import io.cucumber.spring.CucumberContextConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
