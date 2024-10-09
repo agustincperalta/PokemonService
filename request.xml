@@ -1,9 +1,8 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-  xmlns:pok="http://bankaya.com/soap/pokemon/v1">
-    <soapenv:Header/>
-    <soapenv:Body>
-       <pok:getPokemonHeldItemsRequest>
-          <pok:pokemonName>pikachu</pok:pokemonName>
-       </pok:getPokemonHeldItemsRequest>
-    </soapenv:Body>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pok="http://bankaya.com/soap/pokemon/v1">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <pok:getPokemonNameRequest>
+      <pok:pokemonName>pikafdchu</pok:pokemonName>
+    </pok:getPokemonNameRequest>
+  </soapenv:Body>
 </soapenv:Envelope>

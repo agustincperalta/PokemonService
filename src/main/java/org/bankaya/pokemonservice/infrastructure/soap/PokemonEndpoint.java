@@ -20,6 +20,7 @@ import com.bankaya.soap.pokemon.v1.GetPokemonLocationAreaEncountersRequest;
 import com.bankaya.soap.pokemon.v1.GetPokemonLocationAreaEncountersResponse;
 import com.bankaya.soap.pokemon.v1.GetPokemonNameRequest;
 import com.bankaya.soap.pokemon.v1.GetPokemonNameResponse;
+import java.util.Locale;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.bankaya.pokemonservice.application.PokemonService;
@@ -27,6 +28,8 @@ import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
+import org.springframework.ws.soap.server.endpoint.annotation.FaultCode;
+import org.springframework.ws.soap.server.endpoint.annotation.SoapFault;
 
 @Endpoint
 @Slf4j
@@ -89,6 +92,5 @@ public class PokemonEndpoint {
     log.info("m=getPokemonName, getting name from: {}", pokemonName);
     return pokemonService.getPokemonNameByName(pokemonName);
   }
-
 
 }
