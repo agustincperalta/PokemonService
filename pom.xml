@@ -127,6 +127,13 @@
       <version>${junit.platform.version}</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+      <version>2.6.0</version>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -220,5 +227,35 @@
       </plugin>
     </plugins>
   </build>
-
+<profiles>
+  <profile>
+    <id>create-docker-image</id>
+    <activation>
+      <property>
+        <name>image</name>
+      </property>
+    </activation>
+    <build>
+      <plugins>
+        <plugin>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <executions>
+            <execution>
+              <id>create-image</id>
+              <phase>install</phase>
+              <configuration>
+                <target>
+                  <exec executable="./create-docker-image.sh" spawn="false"/>
+                </target>
+              </configuration>
+              <goals>
+                <goal>run</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </build>
+  </profile>
+</profiles>
 </project>
