@@ -1,6 +1,8 @@
 package org.bankaya.pokemonservice.infrastructure.config;
 
 
+import java.util.List;
+import org.bankaya.pokemonservice.infrastructure.config.interceptors.CustomSoapFaultInterceptor;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -8,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.ws.config.annotation.EnableWs;
 import org.springframework.ws.config.annotation.WsConfigurerAdapter;
+import org.springframework.ws.server.EndpointInterceptor;
 import org.springframework.ws.transport.http.MessageDispatcherServlet;
 import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
 import org.springframework.xml.xsd.SimpleXsdSchema;
@@ -41,5 +44,16 @@ public class WebServiceConfig extends WsConfigurerAdapter {
   public XsdSchema pokemonSchema() {
     return new SimpleXsdSchema(new ClassPathResource("pokemon.xsd"));
   }
+
+  @Override
+  public void addInterceptors(List<EndpointInterceptor> interceptors) {
+    interceptors.add(soapFaultInterceptor());
+  }
+
+  @Bean
+  public CustomSoapFaultInterceptor soapFaultInterceptor() {
+    return new CustomSoapFaultInterceptor();
+  }
+
 
 }
