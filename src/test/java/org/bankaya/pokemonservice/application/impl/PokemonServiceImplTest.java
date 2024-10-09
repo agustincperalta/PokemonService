@@ -19,6 +19,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import org.bankaya.pokemonservice.application.impl.PokemonServiceImpl;
 import org.bankaya.pokemonservice.infrastructure.client.PokeApiClient;
 import org.bankaya.pokemonservice.infrastructure.client.PokemonMapperService;
 import org.bankaya.pokemonservice.infrastructure.repository.RequestLogRepository;
