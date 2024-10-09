@@ -113,55 +113,8 @@ mvn verify
 - `develop`: Rama donde se realiza la integración de las nuevas características.
 - `feature/<nombre-feature>`: Se utiliza para el desarrollo de nuevas características.
 - `bugfix/<nombre-bugfix>`: Se utiliza para la corrección de errores.
-
 ## Operaciones SOAP Disponibles
 
 El servicio expone los siguientes métodos SOAP para interactuar con la información de los Pokémon. Cada operación espera una solicitud SOAP con el nombre del Pokémon y devuelve la información correspondiente en una respuesta SOAP.
 
-### Métodos Disponibles
-
-- **getPokemonAbilities**
-   - Descripción: Obtiene las habilidades del Pokémon dado su nombre.
-   - Request: `GetPokemonAbilitiesRequest`
-   - Response: `GetPokemonAbilitiesResponse`
-
-- **getPokemonBaseExperience**
-   - Descripción: Obtiene la experiencia base del Pokémon.
-   - Request: `GetPokemonBaseExperienceRequest`
-   - Response: `GetPokemonBaseExperienceResponse`
-
-- **getPokemonHeldItems**
-   - Descripción: Obtiene los objetos que un Pokémon puede tener.
-   - Request: `GetPokemonHeldItemsRequest`
-   - Response: `GetPokemonHeldItemsResponse`
-
-- **getPokemonId**
-   - Descripción: Obtiene el ID del Pokémon.
-   - Request: `GetPokemonIdRequest`
-   - Response: `GetPokemonIdResponse`
-
-- **getPokemonName**
-   - Descripción: Obtiene el nombre del Pokémon.
-   - Request: `GetPokemonNameRequest`
-   - Response: `GetPokemonNameResponse`
-
-- **getPokemonLocationAreaEncounters**
-   - Descripción: Obtiene las áreas donde se puede encontrar al Pokémon.
-   - Request: `GetPokemonLocationAreaEncountersRequest`
-   - Response: `GetPokemonLocationAreaEncountersResponse`
-
-### Nota:
-Todos los métodos SOAP aceptan como parámetro un String que corresponde al nombre del Pokémon, encapsulado en la solicitud correspondiente (por ejemplo, `GetPokemonAbilitiesRequest`).
-
-### Ejemplo de Solicitud SOAP
-
-```xml
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:poke="http://bankaya.com/soap/pokemon/v1">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <poke:GetPokemonAbilitiesRequest>
-         <poke:pokemonName>Pikachu</poke:pokemonName>
-      </poke:GetPokemonAbilitiesRequest>
-   </soapenv:Body>
-</soapenv:Envelope>
-```
+Puedes consultar el **Request**  detallado para cada endpoint en la [wiki del proyecto](https://github.com/agustincperalta/PokemonService/wiki/Operaciones-SOAP-Disponibles).
