@@ -120,4 +120,4 @@ Consulta los informes de Cucumber en [este enlace](https://reports.cucumber.io/r
 - `main`: Contiene el código listo para producción.
 - `develop`: Rama donde se realiza la integración de las nuevas características.
 - `feature/<nombre-feature>`: Se utiliza para el desarrollo de nuevas características.
-- `bugfix/<nombre-bugfix>`: Se utiliza para la corrección de errores.
+- `hotfix/<nombre-bugfix>`: Se utiliza para la corrección de errores.
