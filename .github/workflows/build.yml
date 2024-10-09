@@ -40,5 +40,4 @@ jobs:
       - name: Verify Cucumber Token
         env:
           CUCUMBER_PUBLISH_TOKEN: ${{ secrets.CUCUMBER_PUBLISH_TOKEN }}
-        run:
-          echo "Cucumber Token: $CUCUMBER_PUBLISH_TOKEN"
+        run: echo "Cucumber Token $CUCUMBER_PUBLISH_TOKEN"
